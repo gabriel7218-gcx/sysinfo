@@ -7,13 +7,7 @@ echo "      |___| Made by Gabriel7218  "
 echo ""
 echo "Hostname: $(cat /proc/sys/kernel/hostname)"
 echo "Kernel: $(uname -r)"
-CPU=$(grep 'system type' /proc/cpuinfo 2>/dev/null | sed 's/.*: //')
-
-if [ -z "$CPU" ]; then
-    CPU=$(grep 'model name' /proc/cpuinfo | head -n1 | sed 's/.*: //')
-fi
-
-echo "CPU: $CPU"
+echo "CPU: $(grep -m1 -E 'system type|model name' /proc/cpuinfo | sed 's/.*: //')"
 echo "Architecture: $(uname -m)"
 echo "Uptime: $(uptime | sed 's/.*up \([^,]*\),.*/\1/')"
 echo "RAM: $(free -h | grep Mem | awk '{print $3 " / " $2}')"
