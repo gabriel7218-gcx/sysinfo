@@ -18,3 +18,4 @@ Tested on:
 - OpenWrt (MIPS / overlayfs)
 - x86_64 Linux
 - WSL2
+- Termux (Mobile)
